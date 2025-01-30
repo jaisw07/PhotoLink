@@ -1,23 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center">
+    android:padding="16dp">
 
-    <!-- Button to open gallery -->
-    <Button
-        android:id="@+id/openGalleryButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Open Gallery" />
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_gravity="center">
 
-    <!-- ImageView to show selected image -->
-    <ImageView
-        android:id="@+id/selectedImageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="Selected image" />
-</LinearLayout>
+        <!-- Button to open gallery -->
+        <Button
+            android:id="@+id/openGalleryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Open Gallery" />
+
+        <!-- Container for Image & Face Overlay -->
+        <FrameLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:gravity="center">
+
+            <!-- ImageView to show selected image -->
+            <ImageView
+                android:id="@+id/selectedImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:contentDescription="Selected image" />
+
+            <!-- Overlay View for Face Bounding Boxes -->
+            <com.example.photolink.FaceOverlayView
+                android:id="@+id/faceOverlayView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>
